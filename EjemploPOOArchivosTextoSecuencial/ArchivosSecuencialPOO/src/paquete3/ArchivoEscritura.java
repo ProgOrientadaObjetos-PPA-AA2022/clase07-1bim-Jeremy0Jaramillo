@@ -27,7 +27,7 @@ public class ArchivoEscritura {
                 nombreArchivo);
         
     }
-
+/*
     public void establecerInformacionAnterior() {
         
         
@@ -52,7 +52,7 @@ public class ArchivoEscritura {
 
         } // fin de catch
     }
-    
+    */
     public void establecerNombreArchivo(String n) {
         nombreArchivo = n;
     }
