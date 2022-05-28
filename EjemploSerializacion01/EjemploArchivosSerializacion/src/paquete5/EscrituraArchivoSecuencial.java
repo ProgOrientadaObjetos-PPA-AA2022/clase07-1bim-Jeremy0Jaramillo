@@ -10,8 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import paquete1.Calificacion;
-import paquete1.Profesor;
+
 
 
 public class EscrituraArchivoSecuencial {
@@ -63,8 +62,8 @@ public class EscrituraArchivoSecuencial {
     // del archivo
     public void establecerLista() {
         LecturaArchivoSecuencial l = new LecturaArchivoSecuencial(obtenerNombreArchivo());
-        l.establecerListaCalificaciones();
-        lista = l.obtenerListaCalificaciones();
+        l.establecerListaHospitales();
+        lista = l.obtenerListaHospitales();
     }
 
     public String obtenerNombreArchivo(){

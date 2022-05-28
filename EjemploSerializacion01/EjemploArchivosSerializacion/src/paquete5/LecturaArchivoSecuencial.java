@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 import java.util.ArrayList;
-import paquete1.Calificacion;
+
 
 /**
  *
@@ -24,6 +24,8 @@ public class LecturaArchivoSecuencial {
     private ObjectInputStream entrada;
     private ArrayList<Hospital> hospital;
     private String nombreArchivo;
+    private String identificador;
+    private Hospital hospitalBuscar;
 
     public LecturaArchivoSecuencial(String n) {
         nombreArchivo = n;
@@ -45,7 +47,7 @@ public class LecturaArchivoSecuencial {
         nombreArchivo = n;
     }
 
-    public void establecerListaCalificaciones() {
+    public void establecerListaHospitales() {
         // 
         hospital = new ArrayList<>();
         File f = new File(obtenerNombreArchivo());
@@ -70,24 +72,73 @@ public class LecturaArchivoSecuencial {
         }
 
     }
+    
+    public void establecerIdentificador(String n) {
+        identificador = n;
+    }
 
-    public ArrayList<Hospital> obtenerListaCalificaciones() {
+    public ArrayList<Hospital> obtenerListaHospitales() {
         return hospital;
     }
 
     public String obtenerNombreArchivo() {
         return nombreArchivo;
     }
+    
+    public void establecerHospitalBuscado() {
+        // 
+        
+        File f = new File(obtenerNombreArchivo());
+        if (f.exists()) {
+
+            while (true) {
+                try {
+                    Hospital registro = (Hospital) entrada.readObject();
+                    
+                    if(registro.obtenerIdHospital().equals(identificador)){
+                        hospitalBuscar = registro;
+                        break;
+                    }
+                    
+                } catch (EOFException endOfFileException) {
+                    return; // se llegó al fin del archivo
+                    // se puede usar el break;
+                    // System.err.println("Fin de archivo: " + endOfFileException);
+
+                } catch (IOException ex) {
+                    System.err.println("Error al leer el archivo: " + ex);
+                } catch (ClassNotFoundException ex) {
+                    System.err.println("No se pudo crear el objeto: " + ex);
+                } catch (Exception ex) {
+                    System.err.println("No hay datos en el archivo: " + ex);
+
+                }
+            }
+        }
+    }
+    
+    public ArrayList<Hospital> obtenerHospitales() {
+        return hospital;
+    }
+    
+    public String obtenerIdentificador() {
+        return identificador;
+    }
+        
+    public Hospital obtenerHospitalBuscado() {
+        return hospitalBuscar;
+    }
 
     @Override
     public String toString() {
         String cadena = "Lista de Hospitales\n";
-        for (int i = 0; i < obtenerListaCalificaciones().size(); i++) {
-            Hospital p = obtenerListaCalificaciones().get(i);
-            cadena = String.format("%sHospital %s (Con %d camas y $%.2f de presupuesto)\n", cadena,
+        for (int i = 0; i < obtenerListaHospitales().size(); i++) {
+            Hospital p = obtenerListaHospitales().get(i);
+            cadena = String.format("%sHospital %s (Con %d camas y $%.2f de presupuesto; ID:%s)\n", cadena,
                     p.obtenerNombre(),
                     p.obtenerNumeroCamas(),
-                    p.obtenerPresupuesto());
+                    p.obtenerPresupuesto(),
+                    p.obtenerIdHospital());
         }
 
         return cadena;
