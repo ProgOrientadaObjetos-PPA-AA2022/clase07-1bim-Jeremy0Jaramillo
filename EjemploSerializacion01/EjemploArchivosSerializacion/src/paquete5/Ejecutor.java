@@ -14,7 +14,7 @@ public class Ejecutor {
     public static void main(String[] args) {
 
         // nombre del archivo
-        String nombreArchivo = "calificaciones.data";
+        String nombreArchivo = "hospitales.data";
 /*
         Calificacion c1 = new Calificacion(10, "Computación");
         Calificacion c2 = new Calificacion(9, "Lógica");
