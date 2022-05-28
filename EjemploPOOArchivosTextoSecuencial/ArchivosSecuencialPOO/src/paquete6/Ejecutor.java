@@ -23,7 +23,7 @@ public class Ejecutor {
         
         Hospital[] lista = {h1, h2, h3, h4};
 
-        for (int i = 0; i < lista.length; i++) {
+        for (int i = 0; i <= lista.length-1; i++) {
             archivo.establecerRegistro(lista[i]);
             archivo.establecerSalida();
         }

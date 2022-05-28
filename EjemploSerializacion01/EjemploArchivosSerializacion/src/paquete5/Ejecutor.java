@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package paquete3;
+package paquete5;
+
 
 import paquete1.Calificacion;
 import paquete1.Profesor;
@@ -14,7 +15,7 @@ public class Ejecutor {
 
         // nombre del archivo
         String nombreArchivo = "calificaciones.data";
-
+/*
         Calificacion c1 = new Calificacion(10, "Computación");
         Calificacion c2 = new Calificacion(9, "Lógica");
         Calificacion c3 = new Calificacion(8, "Literatura");
@@ -28,10 +29,14 @@ public class Ejecutor {
         c1.establecerProfesor(profesor1);
         c2.establecerProfesor(profesor2);
         c3.establecerProfesor(profesor3);
+        */
+        Hospital h1 = new Hospital("Hospital San Juan", 570, 1300.50);
+        Hospital h2 = new Hospital("Hospital Solca", 600, 2000.50);
+        Hospital h3 = new Hospital("Hospital UTPL", 320, 300.50);
         
-       
+        
 
-        Calificacion[] lista = {c1, c2, c3};
+        Hospital[] lista = {h1, h2, h3};
 
         EscrituraArchivoSecuencial archivo = new
          EscrituraArchivoSecuencial(nombreArchivo);

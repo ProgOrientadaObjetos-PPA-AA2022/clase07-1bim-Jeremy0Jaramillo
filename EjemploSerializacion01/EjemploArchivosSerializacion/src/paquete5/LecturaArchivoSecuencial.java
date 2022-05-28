@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package paquete3;
+package paquete5;
+
 
 import java.io.EOFException;
 import java.io.File;
@@ -21,7 +22,7 @@ import paquete1.Calificacion;
 public class LecturaArchivoSecuencial {
 
     private ObjectInputStream entrada;
-    private ArrayList<Calificacion> calificaciones;
+    private ArrayList<Hospital> hospital;
     private String nombreArchivo;
 
     public LecturaArchivoSecuencial(String n) {
@@ -46,14 +47,14 @@ public class LecturaArchivoSecuencial {
 
     public void establecerListaCalificaciones() {
         // 
-        calificaciones = new ArrayList<>();
+        hospital = new ArrayList<>();
         File f = new File(obtenerNombreArchivo());
         if (f.exists()) {
 
             while (true) {
                 try {
-                    Calificacion registro = (Calificacion) entrada.readObject();
-                    calificaciones.add(registro);
+                    Hospital oo = (Hospital) entrada.readObject();
+                    hospital.add(oo);
                 } catch (EOFException endOfFileException) {
                     return; // se llegó al fin del archivo
 
@@ -70,8 +71,8 @@ public class LecturaArchivoSecuencial {
 
     }
 
-    public ArrayList<Calificacion> obtenerListaCalificaciones() {
-        return calificaciones;
+    public ArrayList<Hospital> obtenerListaCalificaciones() {
+        return hospital;
     }
 
     public String obtenerNombreArchivo() {
@@ -80,18 +81,13 @@ public class LecturaArchivoSecuencial {
 
     @Override
     public String toString() {
-        String cadena = "Lista de Calificaciones\n";
+        String cadena = "Lista de Hospitales\n";
         for (int i = 0; i < obtenerListaCalificaciones().size(); i++) {
-            Calificacion p = obtenerListaCalificaciones().get(i);
-            cadena = String.format("%s%s-%.2f-(%s-%s) Asociado al"
-                    + " Hospital %s (%d camas y $%.2f presupuesto)\n", cadena,
-                    p.obtenerNombreMateria(),
-                    p.obtenerNota(),
-                    p.obtenerProfesor().obtenerNombre(),
-                    p.obtenerProfesor().obtenerTipo(),
-                    p.obtenerHospital().obtenerNombre(),
-                    p.obtenerHospital().obtenerNumeroCamas(),
-                    p.obtenerHospital().obtenerPresupuesto());
+            Hospital p = obtenerListaCalificaciones().get(i);
+            cadena = String.format("%sHospital %s (Con %d camas y $%.2f de presupuesto)\n", cadena,
+                    p.obtenerNombre(),
+                    p.obtenerNumeroCamas(),
+                    p.obtenerPresupuesto());
         }
 
         return cadena;

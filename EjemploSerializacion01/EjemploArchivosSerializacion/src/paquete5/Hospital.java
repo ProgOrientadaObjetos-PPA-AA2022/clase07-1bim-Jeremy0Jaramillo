@@ -5,6 +5,7 @@
  */
 package paquete5;
 
+
 import java.io.Serializable;
 
 /**
@@ -12,7 +13,42 @@ import java.io.Serializable;
  * @author reroes
  */
 public class Hospital implements Serializable{
-    String nombre;
-    int numeroCamas;
-    double presupuesto;
+     private String nombre;
+    private int numeroCamas;
+    private double presupuesto;
+    
+    public Hospital(String n, int m, double b){
+        nombre = n;
+        numeroCamas = m;
+        presupuesto = b;
+    }
+    
+    public void establecerNombre(String n){
+        nombre = n;
+    }
+    
+    public void establecerNumeroCamas(int n){
+        numeroCamas = n;
+    }
+    
+    public void establecerPresupuesto(double n){
+        presupuesto = n;
+    }
+    
+    public String obtenerNombre(){
+        return nombre;
+    }
+    
+    public int obtenerNumeroCamas(){
+        return numeroCamas;
+    }
+    
+    public double obtenerPresupuesto(){
+        return presupuesto;
+    }
 }
+
+/* 
+    Agregar valor de objetos de tipo Hospital a un archivo
+    Y leer el archivo
+*/

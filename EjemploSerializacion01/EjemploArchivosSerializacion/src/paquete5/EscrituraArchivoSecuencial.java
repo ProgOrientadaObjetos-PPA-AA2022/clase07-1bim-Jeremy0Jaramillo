@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package paquete3;
+package paquete5;
+
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -17,8 +18,8 @@ public class EscrituraArchivoSecuencial {
 
     private String nombreArchivo;
     private ObjectOutputStream salida; // envía los datos a un archivo
-    private Calificacion registro;
-    private ArrayList<Calificacion> lista;
+    private Hospital hospital;
+    private ArrayList<Hospital> lista;
 
     public EscrituraArchivoSecuencial(String nombreArc) {
         nombreArchivo = nombreArc;
@@ -46,13 +47,13 @@ public class EscrituraArchivoSecuencial {
         nombreArchivo = n;
     }
     // agrega registros al archivo
-    public void establecerRegistro(Calificacion p) {
-        registro = p;
+    public void establecerRegistro(Hospital p) {
+        hospital = p;
     }
 
     public void establecerSalida() {
         try {
-            salida.writeObject(registro); // envía el registro como salida
+            salida.writeObject(hospital); // envía el registro como salida
         } catch (IOException ex) {
             System.err.println("Error al escribir en el archivo.");
         }
@@ -70,7 +71,7 @@ public class EscrituraArchivoSecuencial {
         return nombreArchivo;
     }
     
-    public ArrayList<Calificacion> obtenerLista() {
+    public ArrayList<Hospital> obtenerLista() {
         return lista;
     }
 

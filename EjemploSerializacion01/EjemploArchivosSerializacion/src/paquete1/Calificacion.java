@@ -6,12 +6,14 @@
 package paquete1;
 
 import java.io.Serializable;
+import paquete5.Hospital;
 
 public class Calificacion implements Serializable {
 
     private double nota;
     private String nombreMateria;
     private Profesor profesor;
+    private Hospital o;
 
     public Calificacion(double n, String nombre) {
         nota = n;
@@ -30,6 +32,10 @@ public class Calificacion implements Serializable {
     public void establecerProfesor(Profesor n) {
         profesor = n;
     }
+    
+    public void establecerHospital(Hospital n){
+        o = n;
+    }
 
     public double obtenerNota() {
         return nota;
@@ -41,6 +47,10 @@ public class Calificacion implements Serializable {
     
     public Profesor obtenerProfesor() {
         return profesor;
+    }
+    
+    public Hospital obtenerHospital(){
+        return o;
     }
 
 }
